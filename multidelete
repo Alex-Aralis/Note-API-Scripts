@@ -1,5 +1,25 @@
 #!/bin/bash
 
-for i in $(seq 1 $1)
+
+if [ "$1" == '-h' ] || [ -z "$1" ] || ! [[ "$1" =~ ^[0-9]+$ ]]
+then
+    echo "Usage:"
+    echo "    $0 [swath]"
+    echo
+    exit 0
+fi
+
+count=0
+
+for id in $(./get | grep -oE '"_id":"[^"]*?"' | sed -n 's/"_id":"\(.*\)"/\1/p')
 do
-    
+    if [ $1 -le $count ]
+    then
+        break
+    fi
+
+    ./delete $id
+    count=$((count+1))
+done
+
+

@@ -1,5 +1,13 @@
 #!/bin/bash
 
+if [ "$1" == '-h' ] || [ -z "$1" ] || ! [[ "$1" =~ ^[0-9]+$ ]]
+then
+    echo "Usage:"
+    echo "    $0 [abundance]"
+    echo
+    exit 0
+fi
+
 for i in $(seq 1 $1)
 do
     ./post $i $i
