@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ "$1" == '-h' ] || [ -z "$1" ]
+then
+    echo "Usage:"
+    echo "    $0 [id]"
+    echo
+    exit 0
+fi
+
+if curl -X DELETE -H 'Content-Type:application/json' https://meganote.herokuapp.com/notes/$1 &> /dev/null
+
+then
+    echo '<:'
+fi

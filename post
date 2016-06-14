@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ "$1" == '-h' ] || [ -z "$1" ]
+then
+    echo "Usage:"
+    echo "    $0 [title] [html_body]"
+    echo
+    exit 0
+fi
+
+curl -H 'Content-Type:application/json' -X POST -d "{\"note\":{\"title\":\"$1\",\"body_html\":\"$2\"}}" https://meganote.herokuapp.com/notes
+echo
+
+exit 0 

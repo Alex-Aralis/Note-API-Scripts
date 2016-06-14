@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ "$1" == '-h' ] || [ -z "$1" ]
+then
+    echo "Usage:"
+    echo "    $0 [id] [title] [html_body]"
+    echo
+    exit 0
+fi
+
+curl -H 'Content-Type:application/json' -X PUT -d "{\"note\":{\"title\":\"$2\", \"body_html\":\"$3\"}}" https://meganote.herokuapp.com/notes/$1
+echo
+
+exit 0 
