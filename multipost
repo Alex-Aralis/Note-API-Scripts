@@ -3,7 +3,7 @@
 if [ "$1" == '-h' ] || [ -z "$1" ] || ! [[ "$1" =~ ^[0-9]+$ ]]
 then
     echo "Usage:"
-    echo "    $0 [abundance]"
+    echo "    $0 [abundance] [title] [body_html]"
     echo
     exit 0
 fi
