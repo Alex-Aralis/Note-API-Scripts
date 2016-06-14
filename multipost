@@ -8,9 +8,23 @@ then
     exit 0
 fi
 
-for i in $(seq 1 $1)
-do
-    ./post $i $i
-done
 
-
+if [ -z "$2" ]
+then
+    for i in $(seq 1 $1)
+    do
+        ./post $i $i
+    done
+elif [ -z "$3" ]
+then
+    for i in $(seq 1 $1)
+    do
+        ./post $2 $i
+    done
+elif [ -z "$4" ]
+then
+    for i in $(seq 1 $1)
+    do
+        ./post $2 $3
+    done
+fi
